@@ -66,3 +66,9 @@ cd ../colcon_ws
 ros2 launch fanuc_moveit_config demo.launch.py
 
 ```
+
+## Recommended reads
+
+[How Do Robot Manipulators Move?](https://roboticseabass.com/2024/06/30/how-do-robot-manipulators-move/)
+[panda_ign_moveit2](https://github.com/AndrejOrsula/panda_ign_moveit2/tree/humble_devel)
+[How to start with ROS 2 and Interface to Yaskawa](https://github.com/YaskawaEurope/ros2-starter-for-yaskawa-robots)
