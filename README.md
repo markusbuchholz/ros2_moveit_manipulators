@@ -67,6 +67,19 @@ ros2 launch fanuc_moveit_config demo.launch.py
 
 ```
 
+## Launch Yaskawa GP-8
+
+![image](https://github.com/user-attachments/assets/63add41d-ed58-44b4-8246-7ed3afeb93b9)
+
+```bash
+
+cd ../colcon_ws
+
+ros2 launch moveit_resources_moto_moveit_config xy_start.launch.py
+
+```
+
+
 ## Recommended reads
 
 - [How Do Robot Manipulators Move?](https://roboticseabass.com/2024/06/30/how-do-robot-manipulators-move/)
