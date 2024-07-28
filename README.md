@@ -52,3 +52,17 @@ ros2 run alpha_moveit joint_moveit
 ros2 run alpha_moveit ik_moveit
 
 ```
+
+
+## Launch Fanuc arm
+
+![image](https://github.com/user-attachments/assets/dc2a3afb-a89b-45f0-9e1d-6ce4d26c9bb2)
+
+
+```bash
+
+cd ../colcon_ws
+
+ros2 launch fanuc_moveit_config demo.launch.py
+
+```
