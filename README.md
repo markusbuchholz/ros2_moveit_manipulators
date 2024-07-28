@@ -2,6 +2,8 @@
 
 This repository provides the Docker container to run ROS 2 with Moveit. It provides simple programs to move the robot in joint space and working space.
 
+![image](https://github.com/user-attachments/assets/2f5a92f5-3bbf-4154-aa1f-27a02604aeca)
+
 
 ## Build
 
