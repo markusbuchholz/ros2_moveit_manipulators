@@ -83,5 +83,6 @@ ros2 launch moveit_resources_moto_moveit_config xy_start.launch.py
 ## Recommended reads
 
 - [How Do Robot Manipulators Move?](https://roboticseabass.com/2024/06/30/how-do-robot-manipulators-move/)
+- [pyroboplan](https://github.com/sea-bass/pyroboplan)
 - [panda_ign_moveit2](https://github.com/AndrejOrsula/panda_ign_moveit2/tree/humble_devel)
 - [How to start with ROS 2 and Interface to Yaskawa](https://github.com/YaskawaEurope/ros2-starter-for-yaskawa-robots)
