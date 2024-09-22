@@ -32,6 +32,8 @@ source ./install/setup.bash
 ros2 launch moveit2_tutorials demo.launch.py
 
 ```
+and following the [link](https://moveit.picknik.ai/main/doc/tutorials/quickstart_in_rviz/quickstart_in_rviz_tutorial.html)
+
 
 ## Start motion application
 
