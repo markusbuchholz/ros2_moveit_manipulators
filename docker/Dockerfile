@@ -1,10 +1,10 @@
-# Use the official ROS 2 base image
-FROM osrf/ros:humble-desktop
+# Use the official ROS 2 Jazzy base image
+FROM osrf/ros:jazzy-desktop
 
 # Set environment variables
 ENV DEBIAN_FRONTEND=noninteractive
-ENV ROS_DISTRO=humble
-ENV IGNITION_VERSION=fortress
+ENV ROS_DISTRO=jazzy
+ENV IGNITION_VERSION=garden
 
 # Install necessary packages and dependencies
 RUN apt-get update && apt-get upgrade -y && \
@@ -31,7 +31,7 @@ RUN rm -rf /etc/ros/rosdep/sources.list.d/20-default.list && \
 
 # Update system and install Cyclone DDS
 RUN apt-get update && apt-get dist-upgrade -y && \
-    apt-get install -y ros-humble-rmw-cyclonedds-cpp
+    apt-get install -y ros-jazzy-rmw-cyclonedds-cpp
 
 # Set up colcon mixins, check if it exists before adding
 RUN if ! colcon mixin list | grep -q 'default'; then \
@@ -41,10 +41,9 @@ RUN if ! colcon mixin list | grep -q 'default'; then \
 # Create a colcon workspace
 RUN mkdir -p /root/ws_moveit2/src
 
-# Clone the MoveIt tutorials and import the rest of MoveIt
-RUN cd /root/ws_moveit2/src && \
-    git clone --branch humble https://github.com/ros-planning/moveit2_tutorials && \
-    vcs import < /root/ws_moveit2/src/moveit2_tutorials/moveit2_tutorials.repos
+# Install MoveIt 2 from binaries
+RUN apt-get update && \
+    apt-get install -y ros-jazzy-moveit
 
 # Install dependencies
 RUN cd /root/ws_moveit2 && \
@@ -53,7 +52,7 @@ RUN cd /root/ws_moveit2 && \
 
 # Manually install missing dependencies
 RUN apt-get update && \
-    apt-get install -y ros-humble-image-transport-plugins libgflags-dev
+    apt-get install -y ros-jazzy-image-transport-plugins libgflags-dev
 
 # Source ROS 2 setup script before building
 RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash && cd /root/ws_moveit2 && colcon build --mixin release"
@@ -72,11 +71,11 @@ WORKDIR /root/ws_moveit2
 EXPOSE 11345
 EXPOSE 22
 
-# Install Gazebo Fortress
+# Install Gazebo Garden
 RUN apt-get update && apt-get install -y lsb-release gnupg
 RUN curl https://packages.osrfoundation.org/gazebo.gpg --output /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
 RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" > /etc/apt/sources.list.d/gazebo-stable.list
-RUN apt-get update && apt-get install -y ignition-fortress
+RUN apt-get update && apt-get install -y gz-garden
 
 # Install NVIDIA software
 RUN apt-get update \
@@ -94,4 +93,3 @@ ENV QT_X11_NO_MITSHM=1
 
 # Default command to run
 CMD ["bash"]
-
