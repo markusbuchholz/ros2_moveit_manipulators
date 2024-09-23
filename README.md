@@ -81,6 +81,22 @@ ros2 launch moveit_resources_moto_moveit_config xy_start.launch.py
 
 ```
 
+## Launch Kuka
+
+![image](https://github.com/user-attachments/assets/fb348660-1ba1-4d10-bac4-bfe73821b946)
+
+```bash
+
+ros2 launch kuka_arm_pkg p1_c_moveit_kuka_arm.launch.py
+
+# run the launch file in order to send custom goals using Move group interface
+
+ros2 launch kuka_arm_pkg p1_d_moveit_node_controlling.launch.py
+
+```
+
+- [ref](https://github.com/Robotisim/robotic_arms_ROS2/wiki/Project-%231:-Kuka-6DOF-Moveit2)
+
 
 ## Recommended reads
 
