@@ -20,7 +20,7 @@ docker run -it \
     -e XAUTHORITY=$XAUTH \
     -v "$XAUTH:$XAUTH" \
     -v "/tmp/.X11-unix:/tmp/.X11-unix" \
-    -v "/home/markus/underwater/ROS2_Moveit_manipulators/src/:/root/colcon_ws/src" \
+    -v "/home/markus/underwater/ros2_moveit_manipulators/src/:/root/colcon_ws/src" \
     --privileged \
     --security-opt seccomp=unconfined \
     --network host \

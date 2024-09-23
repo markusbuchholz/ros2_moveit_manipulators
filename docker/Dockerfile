@@ -23,7 +23,6 @@ RUN apt-get update && apt-get upgrade -y && \
     less && \
     apt-get install -y python3-rosdep
 
-
 RUN rm -rf /etc/ros/rosdep/sources.list.d/20-default.list && \
     rosdep init && \
     rosdep update
@@ -41,7 +40,6 @@ RUN mkdir -p /root/ws_moveit2/src
 RUN cd /root/ws_moveit2/src && \
     git clone --branch humble https://github.com/ros-planning/moveit2_tutorials && \
     vcs import < /root/ws_moveit2/src/moveit2_tutorials/moveit2_tutorials.repos
-
 
 RUN cd /root/ws_moveit2 && \
     apt-get update && \
@@ -79,5 +77,14 @@ RUN apt-get update \
 ENV NVIDIA_VISIBLE_DEVICES=all
 ENV NVIDIA_DRIVER_CAPABILITIES=graphics,utility,compute
 ENV QT_X11_NO_MITSHM=1
+
+# Install additional ROS 2 packages
+RUN apt-get update && apt-get install -y \
+    ros-humble-gazebo-ros \
+    ros-humble-gazebo-ros2-control \
+    ros-humble-control* \
+    ros-humble-gazebo-plugins \
+    ros-humble-moveit-visual-tools \
+    ros-humble-graph-msgs
 
 CMD ["bash"]
