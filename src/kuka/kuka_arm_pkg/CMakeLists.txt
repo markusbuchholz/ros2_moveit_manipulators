@@ -33,9 +33,16 @@ ament_target_dependencies(p1_b_moveit_drive ${Moveit_includes})
 
 
 
+add_executable(ik_kuka src/ik_kuka.cpp)
+ament_target_dependencies(ik_kuka ${Moveit_includes})
+
+
 install(TARGETS
-  p1_a_jtc_node p1_b_moveit_drive
-  DESTINATION lib/${PROJECT_NAME})
+  p1_a_jtc_node
+  p1_b_moveit_drive
+  ik_kuka  
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 
 install(DIRECTORY src urdf meshes config launch models worlds
