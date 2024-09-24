@@ -31,16 +31,18 @@ ament_target_dependencies(p1_a_jtc_node rclcpp trajectory_msgs)
 add_executable(p1_b_moveit_drive src/p1_b_motion_drive_moveit.cpp)
 ament_target_dependencies(p1_b_moveit_drive ${Moveit_includes})
 
-
-
 add_executable(ik_kuka src/ik_kuka.cpp)
 ament_target_dependencies(ik_kuka ${Moveit_includes})
+
+add_executable(ik_x_kuka src/ik_x_kuka.cpp)
+ament_target_dependencies(ik_x_kuka ${Moveit_includes})
 
 
 install(TARGETS
   p1_a_jtc_node
   p1_b_moveit_drive
-  ik_kuka  
+  ik_kuka
+  ik_x_kuka  
   DESTINATION lib/${PROJECT_NAME}
 )
 
