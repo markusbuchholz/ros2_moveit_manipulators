@@ -95,7 +95,22 @@ ros2 launch kuka_arm_pkg p1_d_moveit_node_controlling.launch.py
 
 ```
 
-- [ref](https://github.com/Robotisim/robotic_arms_ROS2/wiki/Project-%231:-Kuka-6DOF-Moveit2)
+Run IK using Moveit,
+
+
+```bash
+ros2 launch kuka_arm_pkg p1_c_moveit_kuka_arm.launch.py
+```
+One XYZ goal
+
+```bash
+ros2 run kuka_arm_pkg ik_kuka
+```
+Multiple XYZ goals
+
+```bash
+ros2 run kuka_arm_pkg ik_x_kuka
+```
 
 
 ## Recommended reads
@@ -104,3 +119,4 @@ ros2 launch kuka_arm_pkg p1_d_moveit_node_controlling.launch.py
 - [pyroboplan](https://github.com/sea-bass/pyroboplan)
 - [panda_ign_moveit2](https://github.com/AndrejOrsula/panda_ign_moveit2/tree/humble_devel)
 - [How to start with ROS 2 and Interface to Yaskawa](https://github.com/YaskawaEurope/ros2-starter-for-yaskawa-robots)
+- [ref](https://github.com/Robotisim/robotic_arms_ROS2/wiki/Project-%231:-Kuka-6DOF-Moveit2)
