@@ -7,7 +7,6 @@
 #include <fstream>
 #include <sstream>
 
-// Function to load a file into a string
 std::string load_file_to_string(const std::string& file_path)
 {
   std::ifstream file(file_path);
@@ -20,10 +19,10 @@ std::string load_file_to_string(const std::string& file_path)
   return buffer.str();
 }
 
-// Function to process the .xacro file into URDF
+
 std::string process_xacro(const std::string& xacro_file)
 {
-  std::string urdf_file = "/tmp/processed_urdf.urdf"; // Temporary file for URDF
+  std::string urdf_file = "/tmp/processed_urdf.urdf"; //temp
   std::string command = "xacro " + xacro_file + " -o " + urdf_file;
 
   int result = std::system(command.c_str());
@@ -31,26 +30,23 @@ std::string process_xacro(const std::string& xacro_file)
     throw std::runtime_error("Failed to process xacro file: " + xacro_file);
   }
 
-  return urdf_file; // Return the path to the processed URDF file
+  return urdf_file; 
 }
 
 int main(int argc, char* argv[])
 {
-  // Initialize ROS 2
+
   rclcpp::init(argc, argv);
 
-  // Create the node
+
   auto node = std::make_shared<rclcpp::Node>("moveit_cpp_example");
 
-  // Declare and load robot description (URDF) and robot semantic description (SRDF)
   std::string xacro_file = ament_index_cpp::get_package_share_directory("kuka_arm_moveit") + "/config/kr210_arm.urdf.xacro";
   std::string srdf_file = ament_index_cpp::get_package_share_directory("kuka_arm_moveit") + "/config/kr210_arm.srdf";
 
   try {
-    // Process the .xacro file into a URDF
     std::string urdf_file = process_xacro(xacro_file);
 
-    // Load the URDF and SRDF into the parameter server
     node->declare_parameter("robot_description", rclcpp::ParameterValue(load_file_to_string(urdf_file)));
     node->declare_parameter("robot_description_semantic", rclcpp::ParameterValue(load_file_to_string(srdf_file)));
   }
@@ -59,12 +55,10 @@ int main(int argc, char* argv[])
     return 1;
   }
 
-  // Create a MoveGroupInterface for planning and executing
   moveit::planning_interface::MoveGroupInterface move_group(node, "kuka_arm");
 
-  move_group.setPlanningTime(10.0);  // Set longer planning time if needed
+  move_group.setPlanningTime(10.0);  
 
-  // Set a target Pose
   geometry_msgs::msg::Pose target_pose;
   target_pose.orientation.w = 1.0;
   target_pose.position.x = 2.0;
@@ -73,7 +67,6 @@ int main(int argc, char* argv[])
 
   move_group.setPoseTarget(target_pose);
 
-  // Plan and execute the motion
   moveit::planning_interface::MoveGroupInterface::Plan plan;
   bool success = (move_group.plan(plan) == moveit::core::MoveItErrorCode::SUCCESS);
 
@@ -83,7 +76,6 @@ int main(int argc, char* argv[])
     RCLCPP_ERROR(node->get_logger(), "Planning failed!");
   }
 
-  // Shutdown ROS 2
   rclcpp::shutdown();
   return 0;
 }
