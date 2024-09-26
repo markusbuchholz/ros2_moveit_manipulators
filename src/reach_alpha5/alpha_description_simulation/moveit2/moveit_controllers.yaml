@@ -1,0 +1,44 @@
+# MoveIt uses this configuration for controller management
+/**:
+  ros__parameters:
+    moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
+
+    moveit_simple_controller_manager:
+      controller_names:
+        - xsubsea
+
+      xsubsea:
+        action_ns: follow_joint_trajectory
+        type: FollowJointTrajectory
+        #allowed_execution_duration_scaling: 2.2
+        #allowed_goal_duration_margin: 0.0
+        default: true
+        joints:
+          - axis_a
+          - axis_b
+          - axis_c
+          - axis_d
+          - axis_e
+
+
+
+
+# # MoveIt uses this configuration for controller management
+# /**:
+#   ros__parameters:
+#     moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
+
+#     moveit_simple_controller_manager:
+#       controller_names:
+#         - feedback_joint_trajectory_controller
+
+#       feedback_joint_trajectory_controller:
+#         type: FollowJointTrajectory
+#         action_ns: follow_joint_trajectory
+#         default: true
+#         joints:
+#           - axis_a
+#           - axis_b
+#           - axis_c
+#           - axis_d
+#           - axis_e
