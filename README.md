@@ -113,6 +113,27 @@ ros2 run kuka_arm_pkg ik_x_kuka
 ```
 
 
+## Lanuch Reach Alpha 5
+
+![image](https://github.com/user-attachments/assets/04109710-1325-4892-a63f-e7445e2d6a47)
+
+
+
+```bash
+
+ros2 launch  alpha_bringup_simulation planning_alpha5.launch.py
+
+```
+
+## Run motion program (joint space)
+
+```bash
+
+ros2 run alpha_moveit joint_moveit
+
+```
+
+
 ## Recommended reads
 
 - [How Do Robot Manipulators Move?](https://roboticseabass.com/2024/06/30/how-do-robot-manipulators-move/)
