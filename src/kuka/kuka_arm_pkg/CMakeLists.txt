@@ -37,12 +37,20 @@ ament_target_dependencies(ik_kuka ${Moveit_includes})
 add_executable(ik_x_kuka src/ik_x_kuka.cpp)
 ament_target_dependencies(ik_x_kuka ${Moveit_includes})
 
+add_executable(ik_read src/ik_read.cpp)
+ament_target_dependencies(ik_read ${Moveit_includes})
+
+add_executable(move_kuka src/move_kuka.cpp)
+ament_target_dependencies(move_kuka ${Moveit_includes})
+
 
 install(TARGETS
   p1_a_jtc_node
   p1_b_moveit_drive
   ik_kuka
-  ik_x_kuka  
+  ik_x_kuka
+  ik_read
+  move_kuka  
   DESTINATION lib/${PROJECT_NAME}
 )
 
