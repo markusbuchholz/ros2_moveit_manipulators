@@ -101,17 +101,22 @@ Run IK using Moveit,
 ```bash
 ros2 launch kuka_arm_pkg launch_kuka_arm.launch.py
 ```
-One XYZ goal
+One XYZ goal (working space)
 
 ```bash
 ros2 run kuka_arm_pkg ik_kuka
 ```
-Multiple XYZ goals
+Multiple XYZ goals (working space)
 
 ```bash
 ros2 run kuka_arm_pkg ik_x_kuka
 ```
 
+Move robot (joint space), check final position and call IK
+
+```bash
+ros2 run kuka_arm_pkg move_kuka
+```
 
 ## Lanuch Reach Alpha 5
 
