@@ -99,7 +99,7 @@ Run IK using Moveit,
 
 
 ```bash
-ros2 launch kuka_arm_pkg p1_c_moveit_kuka_arm.launch.py
+ros2 launch kuka_arm_pkg launch_kuka_arm.launch.py
 ```
 One XYZ goal
 
