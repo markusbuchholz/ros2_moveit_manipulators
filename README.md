@@ -130,7 +130,7 @@ ros2 launch  alpha_bringup_simulation planning_alpha5.launch.py
 
 ```
 
-## Run motion program (joint space)
+### Run motion program (joint space)
 
 ```bash
 
