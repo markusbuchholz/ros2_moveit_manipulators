@@ -87,4 +87,12 @@ RUN apt-get update && apt-get install -y \
     ros-humble-moveit-visual-tools \
     ros-humble-graph-msgs
 
+RUN pip3 install numpy==1.23.5
+
+RUN pip3 install pyroboplan
+
+RUN pip3 install pybullet
+
+RUN apt update && apt install -y ros-humble-pinocchio
+
 CMD ["bash"]
