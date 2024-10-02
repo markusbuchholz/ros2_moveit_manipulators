@@ -1,3 +1,6 @@
+// ros2 topic pub /alpha_move_joint std_msgs/msg/Float64MultiArray "{data: [0.0, 1.5746, 0.0, 1.5746, 0.0]}"
+
+
 #include <memory>
 #include "std_msgs/msg/float64_multi_array.hpp"
 #include <rclcpp/rclcpp.hpp>
