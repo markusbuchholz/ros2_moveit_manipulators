@@ -59,13 +59,15 @@ int main(int argc, char *argv[])
     }
 
     // Initialize MoveGroupInterface for the planning group
-    moveit::planning_interface::MoveGroupInterface move_group(node, "alpha_arm");
+    moveit::planning_interface::MoveGroupInterface move_group(node, "alpha");
 
     // Set planning time to give enough time for planning
     move_group.setPlanningTime(20.0);
 
     // Set neutral joint positions
+    //0.0, 1.5746, 0.0, 1.5746, 0.0
     std::vector<double> joint_group_positions = {0.0, 0.0, 0.0, 0.0, 0.0};
+    //std::vector<double> joint_group_positions = {0.0, 1.5746, 0.0, 1.5746, 0.0};
     move_group.setJointValueTarget(joint_group_positions);
 
     // Plan and execute to neutral pose
@@ -85,8 +87,8 @@ int main(int argc, char *argv[])
     geometry_msgs::msg::Pose target_pose;
     target_pose.orientation.w = 1.0;
     target_pose.position.x = 0.2;  // X in meters
-    target_pose.position.y = 0.0;  // Y in meters
-    target_pose.position.z = 0.3;  // Z in meters
+    target_pose.position.y = 0.1;  // Y in meters
+    target_pose.position.z = 0.2;  // Z in meters
 
     // Set the target pose for the end-effector
     move_group.setPoseTarget(target_pose);
