@@ -130,6 +130,29 @@ ros2 launch  alpha_bringup_simulation planning_alpha5.launch.py
 
 ```
 
+### Run motion program (working space)
+```bash
+ros2 launch  alpha_bringup_simulation planning_alpha5.launch.py
+
+```
+
+```bash
+ros2 run alpha_moveit alpha_move_from_topic
+
+```
+```bash
+ros2 run py_alpha_move ik_robot_controller
+
+```
+```bash
+ros2 topic pub /ik_goal geometry_msgs/Pose "{position: {x: 0.1, y: 0.1, z: 0.23}, orientation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}}"
+
+```
+
+
+
+
+
 ### Run motion program (joint space)
 
 ```bash
