@@ -122,18 +122,18 @@ ros2 run kuka_arm_pkg move_kuka
 
 ![image](https://github.com/user-attachments/assets/04109710-1325-4892-a63f-e7445e2d6a47)
 
-
+Note: run in ```colcon_ws```
 
 ```bash
 
-ros2 launch  alpha_bringup_simulation planning_alpha5.launch.py
+ros2 launch alpha_bringup_simulation planning_alpha5.launch.py
 
 ```
 
 ### Run motion program (working space)
 Run in terminal 1,
 ```bash
-ros2 launch  alpha_bringup_simulation planning_alpha5.launch.py
+ros2 launch alpha_bringup_simulation planning_alpha5.launch.py
 
 ```
 Run in terminal 2,
