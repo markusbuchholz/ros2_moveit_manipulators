@@ -152,10 +152,6 @@ ros2 topic pub /ik_goal geometry_msgs/Pose "{position: {x: 0.1, y: 0.1, z: 0.23}
 
 ```
 
-
-
-
-
 ### Run motion program (joint space)
 
 ```bash
@@ -163,6 +159,45 @@ ros2 topic pub /ik_goal geometry_msgs/Pose "{position: {x: 0.1, y: 0.1, z: 0.23}
 ros2 run alpha_moveit joint_moveit
 
 ```
+
+### Run motion (pos control)
+
+```bash
+
+ros2 launch alpha_bringup_simulation planning_alpha5.launch.py
+
+```
+
+Verify Controller is Active:
+
+```bash
+ros2 control list_controllers
+```
+
+Expected Output:
+```bash
+xsubsea                 joint_trajectory_controller/JointTrajectoryController  active
+joint_state_broadcaster joint_state_broadcaster/JointStateBroadcaster          active
+
+```
+
+Move robot:
+
+```bash
+ros2 topic pub /xsubsea/joint_trajectory trajectory_msgs/msg/JointTrajectory "joint_names:
+  - 'axis_a'
+  - 'axis_b'
+  - 'axis_c'
+  - 'axis_d'
+  - 'axis_e'
+points:
+  - positions: [1.0, 0.5, -0.5, 0.0, 1.5]
+    time_from_start:
+      sec: 2
+      nanosec: 0"
+
+```
+
 
 
 ## Recommended reads
