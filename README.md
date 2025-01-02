@@ -118,7 +118,9 @@ Move robot (joint space), check final position and call IK
 ros2 run kuka_arm_pkg move_kuka
 ```
 
-## Lanuch Reach Alpha 5
+## Lanuch Reach Alpha 5 (Underwater applications)
+
+![image](https://github.com/user-attachments/assets/c96894ef-4340-4971-a956-72b04afe626c)
 
 
 Note: run in ```colcon_ws```
