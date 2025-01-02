@@ -27,18 +27,20 @@ add_executable(joint_moveit src/joint_moveit.cpp)
 add_executable(read_pos_joint_moveit src/read_pos_joint_moveit.cpp)
 add_executable(ik_alpha src/ik_alpha.cpp)
 add_executable(alpha_move_from_topic src/alpha_move_from_topic.cpp)
+add_executable(check_ik src/check_ik.cpp)
 
 ament_target_dependencies(joint_moveit "moveit_ros_planning_interface" "rclcpp" std_srvs rclcpp rclcpp_action rclcpp_components control_msgs std_msgs sensor_msgs)
 ament_target_dependencies(read_pos_joint_moveit "moveit_ros_planning_interface" "rclcpp" std_srvs rclcpp rclcpp_action rclcpp_components control_msgs std_msgs sensor_msgs)
 ament_target_dependencies(ik_alpha "moveit_ros_planning_interface" "rclcpp" std_srvs rclcpp rclcpp_action rclcpp_components control_msgs std_msgs sensor_msgs)
 ament_target_dependencies(alpha_move_from_topic "moveit_ros_planning_interface" "rclcpp" std_srvs rclcpp rclcpp_action rclcpp_components control_msgs std_msgs sensor_msgs)
-
+ament_target_dependencies(check_ik "moveit_ros_planning_interface" "rclcpp" std_srvs rclcpp rclcpp_action rclcpp_components control_msgs std_msgs sensor_msgs)
 
 install(TARGETS
   joint_moveit
   read_pos_joint_moveit
   ik_alpha
   alpha_move_from_topic
+  check_ik
   DESTINATION lib/${PROJECT_NAME})
 
 ament_package()

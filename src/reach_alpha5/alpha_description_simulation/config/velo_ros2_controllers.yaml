@@ -1,0 +1,48 @@
+# This config file is used by ros2_control
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+
+    # Existing Joint Trajectory Controller
+    xsubsea:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    # Existing Joint State Broadcaster
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    # Corrected Joint Velocity Controller
+    velocity_controller:
+      type: velocity_controllers/JointGroupVelocityController  # Updated Type
+      ros__parameters:
+        # Command interfaces that this controller will handle
+        command_interfaces:
+          - velocity
+
+        # State interfaces provided by the hardware
+        state_interfaces:
+          - position
+          - velocity
+
+        # List of joints that this controller will manage
+        joints:
+          - axis_a
+          - axis_b
+          - axis_c
+          - axis_d
+          - axis_e
+
+# Parameters specific to the Joint Trajectory Controller
+xsubsea:
+  ros__parameters:
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    joints:
+      - axis_a
+      - axis_b
+      - axis_c
+      - axis_d
+      - axis_e

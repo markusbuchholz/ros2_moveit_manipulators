@@ -120,7 +120,6 @@ ros2 run kuka_arm_pkg move_kuka
 
 ## Lanuch Reach Alpha 5
 
-![image](https://github.com/user-attachments/assets/04109710-1325-4892-a63f-e7445e2d6a47)
 
 Note: run in ```colcon_ws```
 
@@ -130,27 +129,59 @@ ros2 launch alpha_bringup_simulation planning_alpha5.launch.py
 
 ```
 
-### Run motion program (working space)
-Run in terminal 1,
+---
+
+### Run motion program (working space - IK Solver)
+
+
+1. Run in terminal 1,
+
 ```bash
 ros2 launch alpha_bringup_simulation planning_alpha5.launch.py
 
 ```
-Run in terminal 2,
+
+2. Run in terminal 2 (IK Solver),
+
 ```bash
-ros2 run alpha_moveit alpha_move_from_topic
+cd /root/colcon_ws/src/py_alpha_move/py_alpha_move
+
+python3 alpha_ik_controller_sim.py
 
 ```
-Run in terminal 3, it will start also bullet simulator,
+
+3. Run in terminal 3,
+
 ```bash
-ros2 run py_alpha_move ik_robot_controller
+ros2 topic pub /target_position std_msgs/msg/Float64MultiArray "data: [0.19, -0.07, 0.03]" -1
 
 ```
-Run in terminal 4,
+
+4. Move the robot in working space using keyboard,
+
 ```bash
-ros2 topic pub /ik_goal geometry_msgs/Pose "{position: {x: 0.1, y: 0.1, z: 0.23}, orientation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}}"
+cd /root/colcon_ws/src/py_alpha_move/py_alpha_move
+
+python3 xyz_mapper_sim.py
 
 ```
+
+There is possible to check performance of [QuIK](https://github.com/steffanlloyd/quik.git) for Alpha 5 but it does not produce correct joint values (due to wrong DH we passed in yaml file ?).
+
+```bash
+ros2 run quik alpha5_ros_cpp_node --ros-args --params-file /root/colcon_ws/src/quik/config/alpha5.yaml
+```
+
+publish to this node,
+
+
+```bash
+ros2 topic pub /target_position std_msgs/msg/Float64MultiArray "data: [0.19, -0.07, 0.03]" -1
+
+```
+
+
+---
 
 ### Run motion program (joint space)
 
@@ -209,3 +240,4 @@ points:
 - [Reach Robotics SDK](https://reach-robotics.github.io/reach_robotics_sdk/index.html#)
 - [Reach Robotics GitHub](https://github.com/Reach-Robotics)
 - [ref](https://github.com/Robotisim/robotic_arms_ROS2/wiki/Project-%231:-Kuka-6DOF-Moveit2)
+- [QuIK](https://github.com/steffanlloyd/quik.git)

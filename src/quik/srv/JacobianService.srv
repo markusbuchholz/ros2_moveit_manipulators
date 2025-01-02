@@ -1,0 +1,6 @@
+# JacobianService.srv
+# Request
+float64[] q # joint_angles
+---
+# Response
+float64[] jacobian # Jacobian matrix

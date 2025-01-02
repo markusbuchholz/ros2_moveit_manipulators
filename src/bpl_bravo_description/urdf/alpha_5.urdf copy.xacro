@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<robot name="alpha_5" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <!-- Define material globally -->
+    <material name="alpha_black">
+        <color rgba="0.0 0.0 0.0 1.0"/>  <!-- Black color -->
+    </material>
+
+    <xacro:macro name="alpha_5" params="parent *origin name:=alpha_5">
+        
+        <!-- Root Joint, attaching to base_link -->
+        <joint name="${name}_joint" type="fixed">
+            <xacro:insert_block name="origin" />
+            <parent link="${parent}"/>
+            <child link="base_link" />
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </joint>
+
+        <!-- Base Link definition -->
+        <link name="base_link">
+            <visual>
+                <geometry>
+                    <mesh filename="package://bpl_bravo_description/meshes/M2.stl"/>
+                </geometry>
+                <material name="alpha_black"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <box size="0.1 0.1 0.1"/>
+                </geometry>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+            </collision>
+        </link>
+
+        <!-- First joint and link -->
+        <joint name="${name}_axis_e" type="revolute">
+            <parent link="base_link"/>
+            <origin xyz="0.0665 0 0.08" rpy="0 0 3.14159"/>
+            <axis xyz="0 0 -1"/>
+            <child link="m2_1_1_link"/>
+            <limit effort="10" velocity="1.0" lower="0.0" upper="6.3" />
+        </joint>
+
+        <link name="m2_1_1_link">
+            <visual>
+                <geometry>
+                    <mesh filename="package://bpl_bravo_description/meshes/M2-1-1.stl"/>
+                </geometry>
+                <material name="alpha_black"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <cylinder length="0.033" radius="0.020"/>
+                </geometry>
+                <origin xyz="0 0 0.0165" rpy="0 0 0"/>
+            </collision>
+        </link>
+
+        <!-- Second joint and link -->
+        <joint name="${name}_axis_d" type="revolute">
+            <parent link="m2_1_1_link"/>
+            <origin xyz="0.046 0 0.0642" rpy="0 0 0"/>
+            <axis xyz="0 -1 0"/>
+            <child link="m2_1_2_link"/>
+            <limit effort="10" velocity="1.0" lower="0.0" upper="3.2" />
+        </joint>
+
+        <link name="m2_1_2_link">
+            <visual>
+                <geometry>
+                    <mesh filename="package://bpl_bravo_description/meshes/M2-1-3.stl"/>
+                </geometry>
+                <material name="alpha_black"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <cylinder length="0.033" radius="0.020"/>
+                </geometry>
+                <origin xyz="0.02 0 0.0165" rpy="0 0 0"/>
+            </collision>
+        </link>
+
+        <!-- Third joint and link -->
+        <joint name="${name}_axis_c" type="revolute">
+            <parent link="m2_1_2_link"/>
+            <origin xyz="0.042 0 0.0578" rpy="0 0 0"/>
+            <axis xyz="0 -1 0"/>
+            <child link="m2_joint_link"/>
+            <limit effort="10" velocity="1.0" lower="0.0" upper="3.2" />
+        </joint>
+
+        <link name="m2_joint_link">
+            <visual>
+                <geometry>
+                    <mesh filename="package://bpl_bravo_description/meshes/M2.stl"/>
+                </geometry>
+                <material name="alpha_black"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <cylinder length="0.145" radius="0.020"/>
+                </geometry>
+                <origin xyz="-0.02 0 -0.0725" rpy="0 0 0"/>
+            </collision>
+        </link>
+
+        <!-- Fourth joint and link -->
+        <joint name="${name}_axis_b" type="revolute">
+            <parent link="m2_joint_link"/>
+            <origin xyz="0.02 0 0.033" rpy="0 0 2.09439"/>
+            <axis xyz="0 0 -1"/>
+            <child link="m1_link"/>
+            <limit effort="10" velocity="1.0" lower="0.0" upper="3.2" />
+        </joint>
+
+        <link name="m1_link">
+            <visual>
+                <geometry>
+                    <mesh filename="package://bpl_bravo_description/meshes/RS1-100-101-123.stl"/>
+                </geometry>
+                <material name="alpha_black"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <cylinder length="0.1" radius="0.020"/>
+                </geometry>
+                <origin xyz="0 0 0.05" rpy="0 0 0"/>
+            </collision>
+        </link>
+
+        <!-- End-effector joint and link -->
+        <joint name="${name}_ee_joint" type="fixed">
+            <origin xyz="0 0 0.09975" rpy="0 0 0"/>
+            <parent link="m1_link"/>
+            <child link="ee_base_link"/>
+        </joint>
+
+        <link name="ee_base_link">
+            <visual>
+                <geometry>
+                    <box size="0.001 0.001 0.001"/>
+                </geometry>
+                <material name="alpha_black"/>
+            </visual>
+        </link>
+
+        <!-- Push rod link definition -->
+        <link name="alpha_push_rod">
+            <visual>
+                <geometry>
+                    <box size="0.001 0.001 0.001"/>
+                </geometry>
+                <material name="alpha_black"/>
+            </visual>
+        </link>
+
+        <joint name="${name}_axis_a" type="prismatic">
+            <origin xyz="0 0 0.009" rpy="0 0 0"/>
+            <parent link="ee_base_link"/>
+            <child link="alpha_push_rod"/>
+            <axis xyz="0 0 1"/>
+            <limit effort="10" lower="0" upper="0.015" velocity="10"/>
+        </joint>
+
+        <!-- Include end effector (jaws) -->
+        <xacro:include filename="$(find bpl_bravo_description)/urdf/end_effectors/standard_jaws.urdf.xacro"/>
+        <xacro:standard_jaws parent="ee_base_link" prefix="alpha_standard_jaws" description_package="bpl_bravo_description" axis_a="${name}_axis_a">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:standard_jaws>
+
+    </xacro:macro>
+
+</robot>
