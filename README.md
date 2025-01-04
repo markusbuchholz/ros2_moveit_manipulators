@@ -134,6 +134,9 @@ ros2 launch alpha_bringup_simulation planning_alpha5.launch.py
 ---
 ### Run linear motion
 
+![alpha_linear](https://github.com/user-attachments/assets/83da7c35-4be5-46ff-9a7f-836392849a04)
+
+
 1. Run in terminal 1,
 
 ```bash
@@ -152,7 +155,7 @@ python3 linear_ik_controller_node_sim.py
 
 3. Run in terminal 3,
 
-End-effector of the robot moves lineary (almost).
+Run following commands and the end-effector of the robot moves linearly (almost).
 
 
 ```bash
