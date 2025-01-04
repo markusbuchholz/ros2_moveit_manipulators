@@ -132,6 +132,47 @@ ros2 launch alpha_bringup_simulation planning_alpha5.launch.py
 ```
 
 ---
+### Run linear motion
+
+1. Run in terminal 1,
+
+```bash
+ros2 launch alpha_bringup_simulation planning_alpha5.launch.py
+
+```
+
+2. Run in terminal 2 (linear controller),
+
+```bash
+cd /root/colcon_ws/src/py_alpha_move/py_alpha_move
+
+python3 linear_ik_controller_node_sim.py
+
+```
+
+3. Run in terminal 3,
+
+End-effector of the robot moves lineary (almost).
+
+
+```bash
+ros2 topic pub /target_position std_msgs/msg/Float64MultiArray "data: [0.2, 0.3, 0.0]" -1
+
+ros2 topic pub /target_position std_msgs/msg/Float64MultiArray "data: [0.2, -0.3, 0.0]" -1
+
+ros2 topic pub /target_position std_msgs/msg/Float64MultiArray "data: [0.3, 0.0, 0.0]" -1
+
+```
+
+4. Check actual end-effector postion
+
+``` bash
+cd /root/colcon_ws/src/py_alpha_move/py_alpha_move
+
+python3 check_EE_pos.py
+```
+
+---
 
 ### Run motion program (working space - IK Solver)
 
