@@ -175,6 +175,15 @@ cd /root/colcon_ws/src/py_alpha_move/py_alpha_move
 python3 check_EE_pos.py
 ```
 
+5. Optional, there is a possibility to launch IK solver running in C++ (we use [Ceres solver](http://ceres-solver.org/)),
+
+
+``` bash
+colcon build
+
+ros2 run ik_solver_cpp ik_solver_node
+```
+
 ---
 
 ### Run motion program (working space - IK Solver)

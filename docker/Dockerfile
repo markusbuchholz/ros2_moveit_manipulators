@@ -93,7 +93,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip3 install pybullet
 
-RUN apt update && apt install -y ros-humble-pinocchio
+RUN apt update && apt install -y ros-humble-pinocchio libeigen3-dev libceres-dev
 
 RUN pip3 install roboticstoolbox-python[collision]
 
