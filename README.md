@@ -296,3 +296,4 @@ points:
 - [Reach Robotics GitHub](https://github.com/Reach-Robotics)
 - [ref](https://github.com/Robotisim/robotic_arms_ROS2/wiki/Project-%231:-Kuka-6DOF-Moveit2)
 - [QuIK](https://github.com/steffanlloyd/quik.git)
+- [MoveIt compatibility](https://picknik.ai/hardware-ecosystem/)
