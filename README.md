@@ -280,8 +280,7 @@ points:
   - positions: [1.0, 0.5, -0.5, 0.0, 1.5]
     time_from_start:
       sec: 2
-      nanosec: 0"
-
+      nanosec: 0" -1
 ```
 
 
