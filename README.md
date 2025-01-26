@@ -320,7 +320,7 @@ python3 cam_pub.py
 #from camera_depth_ros2
 cd /home/devuser/src/mediapipe
 python3 python3 ros2_xy_gripper_sim_display.py 
-
+```
 
 
 ## Recommended reads
