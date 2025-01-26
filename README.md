@@ -283,6 +283,44 @@ points:
       nanosec: 0" -1
 ```
 
+### Run teleoperation app
+
+Expected results, <br>
+![teleoperation_low](https://github.com/user-attachments/assets/45a94458-1298-459e-9e23-740c43b644a9)
+
+It is required to run other Docker container to capture motion and estimate the postion of hand. <br>
+
+Clone here,<br>
+
+```bash
+git clone https://github.com/markusbuchholz/camera_depth_ros2.git
+```
+
+Complete command pipeline,
+
+
+```bash
+#terminal 1 
+# from current Docker
+ros2 launch alpha_bringup_simulation planning_alpha5.launch.py
+
+#terminal 2 
+# from current Docker
+cd /root/colcon_ws/src/py_alpha_move/py_alpha_move
+python3 alpha_ik_controller_sim_const_axis_b.py
+
+
+#terminal 3
+#from camera_depth_ros2
+cd /home/devuser/cam_ws/src/dev_opencv_py/dev_opencv_py
+python3 cam_pub.py
+
+
+#terminal 4
+#from camera_depth_ros2
+cd /home/devuser/src/mediapipe
+python3 python3 ros2_xy_gripper_sim_display.py 
+
 
 
 ## Recommended reads
