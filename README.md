@@ -338,6 +338,7 @@ cd /root/colcon_ws/src/py_alpha_move/py_alpha_move
 
 Expected results,
 
+![alpha_reach_traj_2](https://github.com/user-attachments/assets/8c7ac69e-11a7-4531-9304-666a9c581b56)
 
 ---
 
