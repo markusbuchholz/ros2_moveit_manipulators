@@ -326,7 +326,7 @@ python3 python3 ros2_xy_gripper_sim_display.py
 
 ## Reach Alpha 5 Motion executor
 
-Run a simple ```bash`` script to pass manipulator positions in joint space. <br>
+Run a simple ```bash``` script to pass manipulator positions in joint space. <br>
 
 The robot positions need to be computed by a trajectory optimizer. <br>
 
